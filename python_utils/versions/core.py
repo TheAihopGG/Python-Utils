@@ -73,7 +73,9 @@ class Version:
                 and self.patch == version.patch
             )
         else:
-            raise TypeError(f"invalid type {type(version)}")
+            raise TypeError(
+                f"'==' not supported between instances of '{type(self)}' and '{type(version)}'"
+            )
 
     def __ge__(self, version: Any | Version) -> bool:
         if isinstance(version, Version):
@@ -85,7 +87,9 @@ class Version:
                 )
             )
         else:
-            raise TypeError(f"invalid type {type(version)}")
+            raise TypeError(
+                f"'>=' not supported between instances of '{type(self)}' and '{type(version)}'"
+            )
 
     def __gt__(self, version: Any | Version) -> bool:
         if isinstance(version, Version):
@@ -97,7 +101,9 @@ class Version:
                 )
             )
         else:
-            raise TypeError(f"invalid type {type(version)}")
+            raise TypeError(
+                f"'>' not supported between instances of '{type(self)}' and '{type(version)}'"
+            )
 
     def __le__(self, version: Any | Version) -> bool:
         if isinstance(version, Version):
@@ -109,7 +115,9 @@ class Version:
                 )
             )
         else:
-            raise TypeError(f"invalid type {type(version)}")
+            raise TypeError(
+                f"'<=' not supported between instances of '{type(self)}' and '{type(version)}'"
+            )
 
     def __lt__(self, version: Any | Version) -> bool:
         if isinstance(version, Version):
@@ -121,7 +129,9 @@ class Version:
                 )
             )
         else:
-            raise TypeError(f"invalid type {type(version)}")
+            raise TypeError(
+                f"'<' not supported between instances of '{type(self)}' and '{type(version)}'"
+            )
 
     def __repr__(self):
         return f"{self.__qualname__}(major={self.major}, minor={self.minor}, patch={self.patch}, string_part={self.string_part})"
