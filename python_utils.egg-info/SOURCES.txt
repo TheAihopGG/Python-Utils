@@ -1,11 +1,11 @@
 LICENSE
 README.md
 setup.py
-python_utils/__init__.py
 python_utils.egg-info/PKG-INFO
 python_utils.egg-info/SOURCES.txt
 python_utils.egg-info/dependency_links.txt
 python_utils.egg-info/top_level.txt
-python_utils/versions/__init__.py
-python_utils/versions/core.py
-python_utils/versions/errors.py
+tests/test_versions.py
+versions/__init__.py
+versions/core.py
+versions/errors.py
