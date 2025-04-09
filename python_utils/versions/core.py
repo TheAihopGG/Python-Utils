@@ -10,14 +10,29 @@ from .errors import (
     InvalidStringToParse,
 )
 
-
+__doc__ = """
+Core module contains base classes for versions module
+"""
 version_pattern = re.compile(
     "^(?P<major>([0-9]+))[.]{1}(?P<minor>([0-9]+))[.]{1}(?P<patch>([0-9]+))(?P<string_part>([a-zA-Z]*))"
 )
 
 
 class Version:
-    """docstring for Version."""
+    """
+    Base class for versions
+
+    Args:
+        major (int): the first number in version
+        minor (int): the second number in version
+        patch (int): the third number in version
+        string_part (str): a string after numbers in version
+
+    Example:
+        >>> v = Version(1, 0, 0, "dev")
+        Version(major=1, minor=0, patch=0, string_part="dev")
+        >>> # version supports >, >=, <, <=, == operators
+    """
 
     # constructors
     def __init__(
@@ -34,6 +49,18 @@ class Version:
 
     @staticmethod
     def from_string(string: str) -> Version:
+        """
+        Parse string to version
+
+        Args:
+            string (str): string
+
+        Returns:
+            - Version instance
+            - raises InvalidStringToParse if string has invalid format
+
+        String version regular expression contains in version_pattern
+        """
         if parsed_string := version_pattern.search(string):
             return Version(
                 major=int(parsed_string.group("major")),
@@ -46,22 +73,22 @@ class Version:
 
     @property
     def major(self):
-        """The major property."""
+        """The first number in version"""
         return self.__major
 
     @property
     def minor(self):
-        """The minor property."""
+        """The second number in version"""
         return self.__minor
 
     @property
     def patch(self):
-        """The patch property."""
+        """The third number in version"""
         return self.__patch
 
     @property
     def string_part(self):
-        """The string_part property."""
+        """The string part in version"""
         return self.__string_part
 
     # operator overrides
@@ -140,10 +167,15 @@ class Version:
         return f"{self.major}.{self.minor}.{self.patch}{self.string_part}"
 
     def to_json(self) -> str:
+        """Returns string version"""
         return str(self)
 
 
 class StringParts:
+    """
+    Class contains string parts for version, such like "dev", "beta", "demo"...
+    """
+
     DEV: Final = "dev"
     RELEASE: Final = "release"
     PRERELEASE: Final = "prerelease"
@@ -158,4 +190,5 @@ __all__ = (
     "StringParts",
     "VersionsError",
     "InvalidStringToParse",
+    "version_pattern",
 )
