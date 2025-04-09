@@ -1,9 +1,12 @@
-class Errors:
-    class VersionsError(Exception):
-        pass
-
-    class InvalidStringToParse(VersionsError):
-        pass
+class VersionsError(Exception):
+    pass
 
 
-__all__ = ("Errors",)
+class InvalidStringToParse(VersionsError):
+    pass
+
+
+__all__ = (
+    "VersionsError",
+    "InvalidStringToParse",
+)

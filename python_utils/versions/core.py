@@ -1,13 +1,14 @@
 from __future__ import annotations
 import re
 from typing import (
-    Callable,
     SupportsInt,
-    Iterable,
     Final,
     Any,
 )
-from .errors import Errors
+from .errors import (
+    VersionsError,
+    InvalidStringToParse,
+)
 
 
 version_pattern = re.compile(
@@ -41,7 +42,7 @@ class Version:
                 string_part=parsed_string.group("string_part"),
             )
         else:
-            raise Errors.InvalidStringToParse(f"failed to parse {string}")
+            raise InvalidStringToParse(f"failed to parse {string}")
 
     @property
     def major(self):
@@ -142,4 +143,9 @@ class StringParts:
     BUILD: Final = "build"
 
 
-__all__ = ("Version", "StringParts")
+__all__ = (
+    "Version",
+    "StringParts",
+    "VersionsError",
+    "InvalidStringToParse",
+)
