@@ -1,5 +1,5 @@
-Metadata-Version: 2.4
-Name: package_name
+Metadata-Version: 2.1
+Name: python-utils
 Version: 1.0.0
 Summary: Python utils
 Author: theaihopgg
@@ -8,14 +8,6 @@ Keywords: utils versions python
 Requires-Python: >=3.12
 Description-Content-Type: text/markdown
 License-File: LICENSE
-Dynamic: author
-Dynamic: author-email
-Dynamic: description
-Dynamic: description-content-type
-Dynamic: keywords
-Dynamic: license-file
-Dynamic: requires-python
-Dynamic: summary
 
 # Python Utils
 
